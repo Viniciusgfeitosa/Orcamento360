@@ -19,7 +19,7 @@ O Orcamento360 tem como propósito:
 🔗 Acesso ao Projeto
 O projeto pode ser acessado online através da página inicial:
 🌐 Orcamento360 – Página Inicial
-https://viniciusgfeitosa.github.io/Orcamento360/
+[https://viniciusgfeitosa.github.io/Orcamento360/](https://viniciusgfeitosa.github.io/Orcamento360/pagina-inicial/)
 
 # 💡 Funcionalidades e Páginas
 
