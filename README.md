@@ -54,4 +54,4 @@ pagina-somos/         → Página "Quem Somos"
 README.md             → Documentação do projeto
 
 ## 🖼️ Visão do Projeto
-![Página Inicial do Orcamento360](img/home.png)
+![Página Inicial do Orcamento360](img/Inicial.png)
