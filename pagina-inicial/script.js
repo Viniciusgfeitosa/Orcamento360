@@ -1,0 +1,14 @@
+// Script da página inicial - Orçamento 360
+document.addEventListener('DOMContentLoaded', function () {
+  // Scroll suave para âncoras (se houver links internos)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+});

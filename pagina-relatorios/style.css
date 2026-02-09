@@ -1,0 +1,50 @@
+body {
+  background-color: #f7f8f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+  color: #000;
+  font-weight: 700;
+}
+
+.nav-link {
+  color: #000 !important;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #198754 !important;
+}
+
+.relatorios {
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: #f5f6f7;
+}
+
+footer {
+  background-color: #e9ecef;
+  font-size: 14px;
+  color: #555;
+}
+
+#listaDetalhes li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#listaDetalhes li span {
+  font-weight: 600;
+}
+
+canvas {
+  max-height: 250px;
+}

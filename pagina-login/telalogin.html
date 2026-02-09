@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento 360 - Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="cadastro.png" alt="Logo" class="logo" />
+      <h1>Orçamento 360</h1>
+    </div>
+
+    <div class="card">
+      <img src="cadastro.png" alt="Login" class="illustration" />
+      <h2>Bem-vindo de volta</h2>
+      <p>Faça login para continuar</p>
+
+<form id="loginForm">
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="password" id="senha" placeholder="Senha" required />
+  <button type="submit">Entrar</button>
+  <p class="mensagem"></p>
+</form>
+
+      <p class="link">Não tem conta? <a href="../pagina-cadastro/telacadastro.html">Criar conta</a></p>
+    </div>
+  </div>
+
+  <script src="../js/auth-utils.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

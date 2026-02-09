@@ -1,0 +1,190 @@
+/*
+|--------------------------------------------------------------------------
+| TELA.LANCAMENTO.CSS (Design Minimalista e Profissional)
+|--------------------------------------------------------------------------
+| Baseado em cores e conceitos modernos.
+*/
+
+/* --- Variáveis de Design (Minimalista) --- */
+:root {
+    --cor-primaria: #2c7be5;       /* Azul moderno para botões e links */
+    --cor-sucesso: #00875A;        /* Verde para Receita */
+    --cor-perigo: #dc3545;         /* Vermelho para Despesa */
+    --cor-fundo-pagina: #f8f9fa;   /* Fundo cinza muito claro */
+    --cor-fundo-card: #FFFFFF;
+    --cor-texto-principal: #343a40; /* Texto escuro */
+    --cor-sombra: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15); /* Sombra suave */
+
+    /* Variáveis herdadas do Header para compatibilidade */
+    --pipefy-blue: var(--cor-primaria); 
+    --pipefy-gray: #6c757d; 
+    --cor-ativa-principal: var(--cor-primaria);
+}
+
+/* --- Layout Base (Para fixar o Footer) --- */
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'Inter', Arial, sans-serif; /* Preferência por fonte limpa */
+    background-color: var(--cor-fundo-pagina);
+    margin: 0;
+    color: var(--cor-texto-principal);
+    display: flex;
+    flex-direction: column; 
+}
+
+/* O main deve crescer para empurrar o footer */
+main {
+    flex-grow: 1; 
+    padding: 2rem 0;
+}
+
+/* --- Header (Mantendo o estilo do seu código anterior) --- */
+.navbar {
+    background-color: var(--cor-fundo-card) !important;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.nav-link.menu-ativo-principal {
+    color: var(--cor-primaria) !important; 
+    font-weight: 700 !important; 
+    border-bottom: 2px solid var(--cor-primaria);
+    padding-bottom: 0.8rem !important; 
+}
+
+/* Botão Sair (Neutro e Elegante) */
+.btn-logout {
+    border-color: #ced4da !important; 
+    color: var(--cor-texto-principal) !important;
+    font-weight: 500;
+}
+.btn-logout:hover {
+    background-color: #e9ecef;
+    border-color: #e9ecef !important;
+    color: var(--cor-texto-principal) !important;
+}
+
+/* --- Container principal (Card Profissional) --- */
+.lancamentos-container {
+    background: var(--cor-fundo-card);
+    max-width: 1200px; /* Limite máximo para telas grandes */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--cor-sombra);
+}
+
+.lancamentos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.lancamentos-container h2 {
+    color: var(--cor-texto-principal);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* Botão Novo Lançamento (Moderno) */
+.novo-lancamento {
+    /* Agora será estilizado via Bootstrap: .btn .btn-primary */
+    background: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- Tabela (Aparência mais limpa) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden; /* Garante que o border-radius funcione */
+    border: 1px solid #e9ecef;
+}
+
+thead th {
+    background-color: #f1f4f9; /* Fundo do cabeçalho */
+    color: #5a6474;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th, td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+/* Cor das linhas alternadas para legibilidade */
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Alinhamento da coluna de ações */
+td:last-child {
+    text-align: center;
+    width: 100px; /* Largura fixa para as ações */
+}
+
+/* Estilos de Cor para Receita/Despesa */
+.tipo-receita {
+    color: var(--cor-sucesso);
+    font-weight: 600;
+}
+
+.tipo-despesa {
+    color: var(--cor-perigo);
+    font-weight: 600;
+}
+
+/* Estilo para os ícones de Ação (Ícones FA) */
+td .btn-acao {
+    cursor: pointer;
+    margin: 0 4px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.1s;
+}
+
+td .btn-acao:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-editar { color: var(--cor-primaria); }
+.btn-excluir { color: var(--cor-perigo); }
+
+
+/* --- Rodapé (Footer Fixo na Base) --- */
+footer {
+    background: var(--cor-fundo-card);
+    color: #6c757d;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    border-top: 1px solid #e9ecef;
+    width: 100%;
+    /* Garantia de que o texto do rodapé não se esprema */
+}
+footer p {
+    margin: 0;
+}

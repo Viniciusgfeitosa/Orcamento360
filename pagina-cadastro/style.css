@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f4f5f7; /* fundo cinza claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #1b1b1b;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 45px;
+  vertical-align: middle;
+}
+
+.header h1 {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-left: 10px;
+  color: #007BFF; /* azul Pifepafy */
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  padding: 40px 30px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.illustration {
+  width: 90px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  color: #007BFF;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.card p {
+  color: #6b7280;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #111;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+input:focus {
+  border-color: #007BFF;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* BOTÃO BRANCO COM DETALHE AZUL */
+button {
+  background-color: #ffffff;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #007BFF;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.mensagem {
+  margin-top: 15px;
+  color: #007BFF;
+  font-weight: 500;
+}
+
+.link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.link a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 25px;
+  }
+}

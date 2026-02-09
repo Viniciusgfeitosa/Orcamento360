@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento 360 - Cadastro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="cadastro.png" alt="Logo" class="logo" />
+      <h1>Orçamento 360</h1>
+    </div>
+
+    <div class="card">
+      <img src="cadastro.png" alt="Cadastro" class="illustration" />
+      <h2>Crie sua conta agora</h2>
+      <p>Controle suas Finanças</p>
+
+      <form id="cadastroForm">
+        <input type="text" id="nome" placeholder="Nome" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="senha" placeholder="Senha (mín. 6 caracteres)" required minlength="6" />
+        <input type="password" id="confirmarSenha" placeholder="Confirmar Senha" required minlength="6" />
+        <button type="submit">Começar a usar</button>
+      </form>
+
+      <p class="mensagem"></p>
+      <p class="link">Já tem conta? <a href="../pagina-login/telalogin.html">Fazer login</a></p>
+    </div>
+  </div>
+
+  <script src="../js/auth-utils.js"></script>
+  <script src="cadastro.js"></script>
+</body>
+</html>

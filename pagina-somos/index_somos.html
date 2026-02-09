@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quem Somos - Orçamento 360</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* Cores Customizadas (Base do seu Tema) */
+        :root {
+            --pipefy-blue: #0a52c8;
+            --pipefy-dark: #333333;
+            --pipefy-light-gray: #eeeeee;
+            --pipefy-gray: #808080;
+        }
+
+        /* Estilo de Fundo do Body e Cores Globais */
+        body {
+            background-color: #F7F8FA;
+        }
+        .bg-white { 
+            background-color: #FFFFFF !important; 
+        }
+
+        /* Mapeamento das Cores do Tema para Classes de Utility do Bootstrap */
+        .text-primary {
+            color: var(--pipefy-blue) !important;
+        }
+        .bg-primary {
+            background-color: var(--pipefy-blue) !important;
+        }
+        .text-dark {
+            color: var(--pipefy-dark) !important;
+        }
+        .text-secondary {
+            color: var(--pipefy-gray) !important;
+        }
+        
+        /* Estilo do Botão Principal (Cadastrar-se/Primary) */
+        .btn-primary-pipefy {
+            color: white !important;
+            font-weight: 600; 
+            background-color: var(--pipefy-blue) !important;
+            border-radius: 6px;
+            padding: 0.5rem 1.2rem !important;
+            transition: background-color 0.2s;
+            border: 1px solid var(--pipefy-blue) !important;
+        }
+
+        .btn-primary-pipefy:hover {
+            background-color: #0843a1 !important; /* Cor mais escura no hover */
+            border-color: #0843a1 !important;
+        }
+
+        /* Estilo do Botão Secundário (Entrar/Login) */
+        .btn-secondary-pipefy {
+            color: var(--pipefy-dark) !important;
+            font-weight: 600; 
+            background-color: transparent !important;
+            border-radius: 6px;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.2s; 
+            border: 1px solid #d0d0d0 !important; /* Borda cinza clara */
+        }
+
+        .btn-secondary-pipefy:hover {
+            color: var(--pipefy-blue) !important;
+            border-color: var(--pipefy-blue) !important; /* Borda azul no hover */
+        }
+
+        /* Estilo do Rodapé */
+        .dashboard-footer {
+            background-color: var(--pipefy-light-gray);
+            color: var(--pipefy-dark);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 3rem;
+        }
+
+        /* Estilos de layout customizados (ajustes para o conteúdo da página) */
+        .intro {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+    </style>
+    </head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-lg"> 
+        <div class="container">
+            <a class="navbar-brand fw-bolder fs-4" href="../pagina-inicial/index.html" title="Página Inicial do Orçamento 360">Orçamento 360</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" 
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center text-center"> 
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-primary fw-bold me-lg-2 active" aria-current="page" href="#">Quem Somos</a>
+                    </li>
+                    
+                    <li class="nav-item ms-lg-3 mt-2 mb-2">
+                        <a class="nav-link btn-secondary-pipefy px-4 py-2 mt-lg-0" href="../pagina-login/telalogin.html">Entrar</a>
+                    </li>
+                    
+                    <li class="nav-item ms-lg-2 mt-2 mb-2">
+                        <a class="nav-link btn-primary-pipefy px-4 py-2 mt-lg-0" href="../pagina-cadastro/telacadastro.html">Cadastrar-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-5">
+
+    <section class="history p-4 p-md-5 mb-5 bg-white rounded-4 shadow-sm">
+        <h2 class="h2 fw-bold border-bottom pb-3 mb-4">Nossa História</h2>
+        <div class="history-content row align-items-center g-4">
+            <div class="text col-lg-8">
+                <p class="text-secondary fs-5">
+                    O Orçamento 360 nasceu com o objetivo de simplificar o controle financeiro
+                    de pessoas e empresas. Nosso propósito é trazer mais clareza, eficiência
+                    e autonomia para quem quer dominar suas finanças de forma prática.
+                </p>
+                <p class="text-secondary fs-5 mb-0">
+                    Ao longo dos anos, nossa equipe tem aprimorado soluções inteligentes e
+                    intuitivas que ajudam milhares de usuários a alcançarem seus objetivos
+                    financeiros com segurança e planejamento.
+                </p>
+            </div>
+            <div class="image-placeholder col-lg-4">
+                <img src="../img/quemsomos.png" alt="Imagem ilustrativa" class="img-fluid rounded-3 shadow-lg"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="team text-center p-4 p-md-5 bg-white rounded-4 shadow-sm">
+        <h2 class="h2 fw-bold border-bottom pb-3 mb-4">Nossa Equipe</h2>
+        <div class="team-members row justify-content-center g-4">
+<div class="member col-6 col-sm-4 col-md-3 col-lg-2">
+    <img src="../img/marianna.jpg" alt="Marianna Farias" class="photo mx-auto bg-light rounded-circle mb-2 border border-2" style="width: 120px; height: 120px; object-fit: cover;">
+    <p class="fw-bold mb-0">Marianna Farias</p>
+</div>
+<div class="member col-6 col-sm-4 col-md-3 col-lg-2">
+    <img src="../img/vinicius.jpg" alt="Vinicius Feitosa" class="photo mx-auto rounded-circle mb-2 border border-2" style="width: 120px; height: 120px; object-fit: cover;">
+    <p class="fw-bold mb-0">Vinicius Feitosa</p>
+</div>
+
+<div class="member col-6 col-sm-4 col-md-3 col-lg-2">
+    <img src="../img/vitor.jpg" alt="Vitor Souza" class="photo mx-auto rounded-circle mb-2 border border-2" style="width: 120px; height: 120px; object-fit: cover;">
+    <p class="fw-bold mb-0">Vitor Souza</p>
+</div>
+        </div>
+    </section>
+</main>
+
+<footer class="dashboard-footer">
+    <div class="container">
+        <p class="small mb-0">
+            2025 © Todos os direitos reservados.
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script_somos.js"></script>
+</body>
+</html>

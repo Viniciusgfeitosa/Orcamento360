@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão Geral | Orçamento 360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ================================================= */
+        /* 🎨 1. VARIÁVEIS (Usadas principalmente pelo Dark Mode) */
+        /* ================================================= */
+        :root {
+            /* Cores de identidade (Usadas no modo claro, ex: botão azul) */
+            --pipefy-blue: #0d6efd;
+            --pipefy-dark: #343a40;
+            --pipefy-gray: #6c757d;
+            --pipefy-light-gray: #e9ecef;
+            /* Borda pontilhada no claro */
+
+            /* Variáveis de Fundo (Para o Dark Mode, pois o Light Mode usa cores fixas) */
+            --bg-principal: #f7f8fa;
+            --texto-principal: #212529;
+            --cartao-bg: #ffffff;
+            --borda-cor: #e0e0e0;
+        }
+
+        /* ================================================= */
+        /* 🌙 2. VARIÁVEIS DO TEMA ESCURO (Sobrescrita de variáveis) */
+        /* ================================================= */
+        :root.dark-mode {
+            /* Cores de identidade adaptadas */
+            --pipefy-blue: #3d8bfd;
+            --pipefy-dark: #f8f9fa;
+            --pipefy-gray: #adb5bd;
+            --pipefy-light-gray: #495057;
+
+            /* Variáveis Globais de Tema ESCURO */
+            --bg-principal: #181a1b;
+            --texto-principal: #f1f3f5;
+            --cartao-bg: #242526;
+            --borda-cor: #444;
+        }
+
+        /* ================================================= */
+        /* 💡 3. REGRAS DO MODO CLARO (CORES FIXAS - SUAS REGRAS ORIGINAIS) */
+        /* ESTAS REGRAS NÃO SERÃO ALTERADAS. */
+        /* ================================================= */
+
+        body {
+            background-color: #F7F8FA;
+            color: var(--pipefy-dark);
+            /* Assume o texto escuro */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar {
+            background-color: #FFFFFF !important;
+        }
+
+        .container-conteudo-principal {
+            background-color: #F7F8FA;
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .cartao-dashboard {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .cartao-dashboard .cartao-titulo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--pipefy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .conteudo-cartao-vazio {
+            border: 1px dashed var(--pipefy-light-gray);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            min-height: 150px;
+        }
+
+        .cartao-grande .conteudo-cartao-vazio {
+            min-height: 250px;
+        }
+
+        footer {
+            background-color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            margin-top: 2rem;
+        }
+
+        /* Estilos menores e Menu Ativo (mantidos) */
+        .nav-link.menu-ativo-principal {
+            color: var(--pipefy-blue) !important;
+            font-weight: 700 !important;
+            border-bottom: 2px solid var(--pipefy-blue);
+            padding-bottom: 10px !important;
+        }
+
+        main.py-4 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        .alternador-modo-escuro {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            margin-right: 1rem;
+        }
+
+
+
+        .alternador-modo-escuro .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            background-color: var(--pipefy-gray);
+            border-color: var(--pipefy-gray);
+        }
+
+        .alternador-modo-escuro .form-check-input:checked {
+            background-color: var(--pipefy-blue);
+            border-color: var(--pipefy-blue);
+        }
+
+        /* Fundo principal e Textos */
+        :root.dark-mode body {
+            background-color: var(--bg-principal) !important;
+            /* Sobrescreve #F7F8FA */
+            color: var(--texto-principal) !important;
+        }
+
+        :root.dark-mode .container-conteudo-principal {
+            background-color: var(--bg-principal) !important;
+            /* Sobrescreve #F7F8FA */
+        }
+
+        /* Navbar e Footer */
+        :root.dark-mode .navbar,
+        :root.dark-mode footer {
+            background-color: var(--cartao-bg) !important;
+            /* Sobrescreve white */
+            border-color: var(--borda-cor) !important;
+        }
+
+        /* Ícone do menu hambúrguer no modo escuro */
+        .dark-mode .navbar-toggler {
+            border-color: #fff !important;
+            /* borda branca */
+        }
+
+        .dark-mode .navbar-toggler-icon {
+            filter: invert(1) brightness(2);
+            /* deixa o ícone branco */
+        }
+
+        /* Cards */
+        :root.dark-mode .cartao-dashboard {
+            background-color: var(--cartao-bg) !important;
+            /* Sobrescreve #ffffff */
+            border-color: var(--borda-cor) !important;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Textos (Garante que tudo fique claro) */
+        :root.dark-mode .text-dark,
+        :root.dark-mode .text-secondary,
+        :root.dark-mode h1,
+        :root.dark-mode .cartao-dashboard .cartao-titulo,
+        :root.dark-mode .navbar-brand {
+            color: var(--texto-principal) !important;
+        }
+
+        /* Ícone da Lua e links da navbar */
+        :root.dark-mode .fa-moon,
+        :root.dark-mode .nav-link {
+            color: var(--texto-principal) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bolder fs-4" href="#" title="Dashboard Orçamento 360">Orçamento 360</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center text-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2 menu-ativo-principal"
+                                href="../pagina-visaogeral/visaogeral.html" aria-current="page">Visão Geral</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2"
+                                href="../pagina-lancamentos/Tela.Lancamento.html">Lançamentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2"
+                                href="../pagina-relatorios/relatorio.html">Relatórios</a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3 mt-2 mb-2 d-flex align-items-center justify-content-center">
+
+                            <div class="alternador-modo-escuro">
+                                <i class="fas fa-moon text-secondary"></i>
+                                <div class="form-check form-switch ms-2">
+                                    <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item ms-lg-2 mt-2 mb-2">
+                            <a id="btnSair" class="nav-link btn-secundario-pipefy px-4 py-2 mt-lg-0" href="#">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="py-4">
+        <div class="container container-conteudo-principal">
+            <h1 class="display-5 fw-bold text-dark mb-4">Visão Geral</h1>
+
+            <div class="row g-4 mb-5">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="cartao-dashboard shadow-sm">
+                        <h5 class="cartao-titulo text-uppercase text-secondary small">Saldo Atual</h5>
+                        <div class="conteudo-cartao-vazio">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="cartao-dashboard shadow-sm">
+                        <h5 class="cartao-titulo text-uppercase text-secondary small">Receitas (Mês)</h5>
+                        <div class="conteudo-cartao-vazio">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="cartao-dashboard shadow-sm">
+                        <h5 class="cartao-titulo text-uppercase text-secondary small">Despesas (Mês)</h5>
+                        <div class="conteudo-cartao-vazio">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="cartao-dashboard shadow-sm cartao-grande">
+                        <h5 class="cartao-titulo">Maiores Gastos</h5>
+                        <div class="conteudo-cartao-vazio">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="cartao-dashboard shadow-sm cartao-grande">
+                        <h5 class="cartao-titulo">Despesas por Categorias</h5>
+                        <div class="conteudo-cartao-vazio">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>2025 © Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/auth-utils.js"></script>
+    <script src="visaogeral.js"></script>
+</body>
+
+</html>

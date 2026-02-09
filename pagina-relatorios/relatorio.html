@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios | Orçamento 360</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- Variáveis de Design (Minimalista) --- */
+        :root {
+            --cor-primaria: #2c7be5;
+            /* Azul moderno (para destaque) */
+            --cor-texto-principal: #343a40;
+            /* Texto escuro */
+            --cor-fundo-pagina: #f7f8f9;
+            /* Fundo claro, mantendo o seu */
+            --pipefy-blue: var(--cor-primaria);
+            /* Mapeamento para o header */
+            --pipefy-gray: #6c757d;
+        }
+
+        /* --- Estilos do Header (Novo Visual) --- */
+        .navbar {
+            background-color: #FFFFFF !important;
+            /* Linha sutil para separar do conteúdo */
+        }
+
+        /* Removida a regra de cor específica do .navbar-brand aqui para deixar a cor padrão (text-dark) prevalecer */
+
+        /* Destaque do item de menu ativo: 'Relatórios' */
+        .nav-link.menu-ativo-principal {
+            color: var(--cor-primaria) !important;
+            font-weight: 700 !important;
+            border-bottom: 2px solid var(--cor-primaria);
+            /* Destaque sutil */
+            padding-bottom: 0.8rem !important;
+        }
+
+        .nav-link {
+            transition: color 0.2s;
+        }
+
+        /* Estilos do Botão Sair (Neutro e Elegante) */
+        .btn-logout {
+            border-color: #ced4da !important;
+            color: var(--cor-texto-principal) !important;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-logout:hover {
+            background-color: #e9ecef;
+            border-color: #e9ecef !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* Estilos do Alternador de Modo Escuro (Compatibilidade) */
+        .alternador-modo-escuro {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            margin-right: 1rem;
+        }
+
+        .alternador-modo-escuro .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            background-color: var(--pipefy-gray);
+            border-color: var(--pipefy-gray);
+        }
+
+        .alternador-modo-escuro .form-check-input:checked {
+            background-color: var(--pipefy-blue);
+            border-color: var(--pipefy-blue);
+        }
+
+        /* --- Estilos do Conteúdo Principal (Mantenho seu estilo original para o resto) --- */
+        body {
+            background-color: var(--cor-fundo-pagina);
+        }
+
+        .relatorios {
+            background-color: #ffffff;
+            border-radius: 15px;
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+            background-color: #f5f6f7;
+        }
+
+        footer {
+            background-color: white;
+            border-top: 1px solid #e9ecef;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* ========================== */
+        /*      MODO ESCURO GLOBAL    */
+        /* ========================== */
+
+        :root.dark-mode {
+            --cor-texto-principal: #e5e7eb;
+            --cor-fundo-pagina: #1e1f22;
+            --cor-fundo-card: #242527;
+            --cor-primaria: #4ea1ff;
+            --pipefy-gray: #9ca3af;
+        }
+
+
+        /* Ícone do menu hambúrguer no modo escuro */
+        .dark-mode .navbar-toggler {
+            border-color: #fff !important;
+            /* borda branca */
+        }
+
+        .dark-mode .navbar-toggler-icon {
+            filter: invert(1) brightness(2);
+            /* deixa o ícone branco */
+        }
+
+        /* Fundo da página */
+        :root.dark-mode body {
+            background-color: var(--cor-fundo-pagina) !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* Navbar */
+        :root.dark-mode .navbar {
+            background-color: #242527 !important;
+            border-bottom-color: #3a3d40 !important;
+        }
+
+        :root.dark-mode .navbar-brand {
+            color: #ffffff !important;
+        }
+
+        :root.dark-mode .nav-link {
+            color: #d1d5db !important;
+        }
+
+        :root.dark-mode .nav-link.menu-ativo-principal {
+            color: var(--cor-primaria) !important;
+            border-bottom-color: var(--cor-primaria) !important;
+        }
+
+        /* Cards */
+        :root.dark-mode .card {
+            background-color: #3a3d40 !important;
+            color: var(--cor-texto-principal) !important;
+            border: none !important;
+        }
+
+        /* Container relatorios */
+        :root.dark-mode .relatorios {
+            background-color: var(--cor-fundo-card) !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* Lista */
+        :root.dark-mode .list-group-item {
+            background-color: #2b2d31 !important;
+            color: var(--cor-texto-principal) !important;
+            border-color: #3a3d40 !important;
+        }
+
+        /* Modal */
+        :root.dark-mode .modal-content {
+            background-color: #2b2d31 !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        :root.dark-mode .modal-header {
+            background-color: #1f2023 !important;
+        }
+
+        /* Botão Sair */
+        :root.dark-mode .btn-logout {
+            color: var(--cor-texto-principal) !important;
+            border-color: #4b4f54 !important;
+        }
+
+        :root.dark-mode .btn-logout:hover {
+            background-color: #3a3d40 !important;
+        }
+
+        /* Footer */
+        :root.dark-mode footer {
+            background-color: #2a2c2f !important;
+            border-top-color: #3a3d40 !important;
+        }
+
+        :root.dark-mode footer p {
+            color: #bfc4c9 !important;
+        }
+
+        /* Switch (mesmo das outras páginas) */
+        :root.dark-mode .form-check-input {
+            background-color: var(--cor-primaria) !important;
+            border-color: var(--cor-primaria) !important;
+        }
+
+        /* Chart.js (texto do gráfico) */
+        :root.dark-mode canvas {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bolder fs-4 text-dark" href="#" title="Dashboard Orçamento 360">Orçamento
+                    360</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center text-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2" href="../pagina-visaogeral/visaogeral.html">Visão
+                                Geral</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2"
+                                href="../pagina-lancamentos/Tela.Lancamento.html">Lançamentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2 menu-ativo-principal"
+                                href="../pagina-relatorios/relatorio.html">Relatórios</a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3 mt-2 mb-2 d-flex align-items-center justify-content-center">
+
+                            <div class="alternador-modo-escuro">
+                                <i class="fas fa-moon text-secondary"></i>
+                                <div class="form-check form-switch ms-2">
+                                    <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item ms-lg-2 mt-2 mb-2">
+                            <a id="btnSair" class="nav-link btn-secundario-pipefy px-4 py-2 mt-lg-0" href="#">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <section class="relatorios p-4 rounded shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Controle Financeiro</h2>
+                <button id="gerarRelatorio" class="btn btn-secondary">
+                    <i class="fa-solid fa-chart-line"></i> Gerar Relatório
+                </button>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-3 text-center">
+                        <h5>Distribuição de Transações</h5>
+                        <canvas id="graficoPizza"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-3 text-center">
+                        <h5>Evolução Financeira</h5>
+                        <canvas id="graficoLinha"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-4 text-center">
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h6>Receitas</h6>
+                        <p id="valorReceitas">R$ 0,00</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h6>Despesas</h6>
+                        <p id="valorDespesas">R$ 0,00</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h6>Saldo</h6>
+                        <p id="valorSaldo">R$ 0,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4 p-3">
+                <h6>Detalhes das Transações</h6>
+                <ul id="listaDetalhes" class="list-group list-group-flush">
+                    <li class="list-group-item text-muted">Nenhum dado disponível</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+    <div class="modal fade" id="modalRelatorio" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Relatório do Mês</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="relatorioMensal" class="list-group list-group-flush"></ul>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" onclick="gerarRelatorioPDF()">📄 Baixar PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>2025 © Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/auth-utils.js"></script>
+    <script src="relatorio.js"></script>
+</body>
+
+</html>

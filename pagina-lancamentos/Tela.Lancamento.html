@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lançamentos | Orçamento 360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="Tela.Lancamento.css" />
+
+    <style>
+        /* --- Variáveis de Estilo do Header (Mantidas) --- */
+        :root {
+            --pipefy-blue: #0d6efd;
+            --pipefy-gray: #6c757d;
+            --cor-ativa-principal: var(--pipefy-blue);
+            --cor-texto-principal: #343a40;
+            --cor-fundo-pagina: #F7F8FA;
+            --cor-fundo-card: #FFFFFF;
+        }
+
+        /* =======================
+    DARK MODE GLOBAL
+   ======================= */
+
+        :root.dark-mode {
+            --cor-fundo-pagina: #191a1c;
+            --cor-fundo-card: #242527;
+            --cor-texto-principal: #f1f1f1;
+            --cor-borda: #3a3f45;
+            --bg-principal: #181a1b;
+            --texto-principal: #f1f3f5;
+        }
+
+        /* Ícone do menu hambúrguer no modo escuro */
+        .dark-mode .navbar-toggler {
+            border-color: #fff !important;
+            /* borda branca */
+        }
+
+        .dark-mode .navbar-toggler-icon {
+            filter: invert(1) brightness(2);
+            /* deixa o ícone branco */
+        }
+
+        /* Fundo geral */
+        :root.dark-mode body {
+            background-color: var(--cor-fundo-pagina) !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* Navbar */
+        :root.dark-mode .navbar {
+            background-color: #242527 !important;
+        }
+
+        :root.dark-mode .nav-link {
+            color: #e3e3e3 !important;
+        }
+
+        :root.dark-mode .nav-link.menu-ativo-principal {
+            color: #0d6efd !important;
+        }
+
+        /* Card principal (container da tabela) */
+        :root.dark-mode .lancamentos-container {
+            background-color: var(--cor-fundo-card) !important;
+            color: var(--cor-texto-principal) !important;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* Tabelas */
+        :root.dark-mode table {
+            color: var(--cor-texto-principal) !important;
+        }
+
+
+        :root.dark-mode table thead th {
+            border: 2px dashed #d3dbe6;
+            color: white;
+        }
+
+        :root.dark-mode table thead,
+        :root.dark-mode table thead tr,
+        :root.dark-mode table thead th {
+            background-color: #242527 !important;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #242527;
+        }
+
+        :root.dark-mode table tbody tr:hover {
+            background-color: #32373d !important;
+        }
+
+        :root.dark-mode td,
+        :root.dark-mode th {
+            border-color: var(--cor-borda) !important;
+        }
+
+        :root.dark-mode .table> :not(caption)>*>* {
+            background-color: transparent !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* Modal */
+        :root.dark-mode .modal-content {
+            background-color: #2a2f35 !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        :root.dark-mode .form-control,
+        :root.dark-mode .form-select {
+            background-color: #1f2226 !important;
+            border-color: var(--cor-borda) !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        :root.dark-mode .navbar-brand {
+            color: white;
+        }
+
+        /* Inputs focados */
+        :root.dark-mode .form-control:focus,
+        :root.dark-mode .form-select:focus {
+            border-color: #0d6efd !important;
+            box-shadow: none !important;
+        }
+
+        /* Footer */
+        :root.dark-mode footer {
+            background-color: #24282d;
+            border-top: 1px solid var(--cor-borda) !important;
+        }
+
+        :root.dark-mode footer p {
+            color: #cccccc !important;
+        }
+
+        /* --- AJUSTE CRUCIAL: Layout para Footer Fixo na Base (Minimizado) --- */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--cor-fundo-pagina);
+            display: flex;
+            flex-direction: column;
+            /* Organiza header, main e footer em coluna */
+        }
+
+        /* Força o conteúdo principal a preencher o espaço restante, empurrando o footer */
+        main {
+            flex-grow: 1;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* --- Estilos do Header (Mantidos do seu código escolhido) --- */
+        .navbar {
+            background-color: #FFFFFF !important;
+        }
+
+        .nav-link.menu-ativo-principal {
+            color: var(--pipefy-blue) !important;
+            font-weight: 700 !important;
+        }
+
+        .alternador-modo-escuro {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            margin-right: 1rem;
+        }
+
+        .alternador-modo-escuro .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            background-color: var(--pipefy-gray);
+            border-color: var(--pipefy-gray);
+        }
+
+        .alternador-modo-escuro .form-check-input:checked {
+            background-color: var(--pipefy-blue);
+            border-color: var(--pipefy-blue);
+        }
+
+        .btn-logout {
+            border-color: #ced4da !important;
+            color: var(--cor-texto-principal) !important;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-logout:hover {
+            background-color: #e9ecef;
+            border-color: #e9ecef !important;
+            color: var(--cor-texto-principal) !important;
+        }
+
+        /* --- Estilo do Conteúdo Principal e Tabela (Seu original) --- */
+        .lancamentos-container {
+            background-color: var(--cor-fundo-card);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Estilo do Footer (Ajustado para o fundo e alinhamento) --- */
+        footer {
+            background-color: var(--cor-fundo-card);
+            border-top: 1px solid #e9ecef;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        header,
+        .navbar {
+            border-bottom: none !important;
+            box-shadow: none !important;
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bolder fs-4" href="#" title="Dashboard Orçamento 360">Orçamento 360</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center text-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2" href="../pagina-visaogeral/visaogeral.html">Visão
+                                Geral</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2 menu-ativo-principal"
+                                href="../pagina-lancamentos/Tela.Lancamento.html">Lançamentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark me-lg-2"
+                                href="../pagina-relatorios/relatorio.html">Relatórios</a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3 mt-2 mb-2 d-flex align-items-center justify-content-center">
+
+                            <div class="alternador-modo-escuro">
+                                <i class="fas fa-moon text-secondary"></i>
+                                <div class="form-check form-switch ms-2">
+                                    <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item ms-lg-2 mt-2 mb-2">
+                            <a id="btnSair" class="nav-link btn-secundario-pipefy px-4 py-2 mt-lg-0" href="#">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lancamentos-container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Lançamentos</h2>
+                    <button class="btn btn-primary novo-lancamento">Novo Lançamento</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Tipo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-lancamentos">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de Lançamento -->
+    <div class="modal fade" id="lancamentoModal" tabindex="-1" aria-labelledby="lancamentoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formLancamento">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lancamentoModalLabel">Novo Lançamento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="data" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="data" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="number" step="0.01" class="form-control" id="valor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <select class="form-select" id="tipo" required>
+                                <option value="">Selecione</option>
+                                <option value="Receita">Receita</option>
+                                <option value="Despesa">Despesa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <p>2025 © Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/auth-utils.js"></script>
+    <script src="Tela.Lancamento.js"></script>
+</body>
+
+</html>

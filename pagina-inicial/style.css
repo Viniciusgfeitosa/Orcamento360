@@ -1,0 +1,93 @@
+/* Cores  */
+:root {
+    --pipefy-blue: #0a52c8;
+    --pipefy-dark: #333333;
+    --pipefy-light-gray: #eeeeee;
+    --pipefy-gray: #808080;
+}
+
+        body {
+            background-color: #F7F8FA;
+        }
+        
+        /* Garante que elementos com bg-white (Navbar, Caixa da Imagem) fiquem em branco puro para contraste */
+        .bg-white { 
+            background-color: #FFFFFF !important; 
+        }
+
+        /* Hero Section: Retornada ao original com padding e borda sutil */
+        #hero-section {
+            padding-bottom: 5rem !important; 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Cinza muito claro */
+            margin-bottom: 0; 
+        }
+
+        /* Features Section: Agora com fundo branco e sombra mais visível */
+        #features {
+            padding-top: 5rem !important; /* Mantém o padding original */
+            background-color: #FFFFFF; /* Fundo BRANCO PURO para a separação visual */
+            /* Aumenta a sombra para ser mais perceptível */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra mais visível, mas ainda suave */
+        }
+        
+        /* Garante que os ícones usem a cor primária se a classe for text-primary */
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+.text-primary {
+    color: var(--pipefy-blue) !important;
+}
+.bg-primary {
+    background-color: var(--pipefy-blue) !important;
+}
+.text-dark {
+    color: var(--pipefy-dark) !important;
+}
+.text-secondary {
+    color: var(--pipefy-gray) !important;
+}
+
+.btn-secondary-pipefy {
+    color: var(--pipefy-dark) !important;
+    font-weight: 600; 
+    background-color: transparent !important;
+    border-radius: 6px;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.2s; 
+    border: 1px solid #d0d0d0 !important; 
+}
+
+.btn-secondary-pipefy:hover {
+    color: var(--pipefy-blue) !important;
+    border-color: var(--pipefy-blue) !important; 
+}
+
+.btn-primary-pipefy {
+    color: white !important;
+    font-weight: 600; 
+    background-color: var(--pipefy-blue) !important;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem !important;
+    transition: background-color 0.2s;
+    border: 1px solid var(--pipefy-blue) !important;
+}
+
+.btn-primary-pipefy:hover {
+    background-color: #0843a1 !important; 
+    border-color: #0843a1 !important;
+}
+
+.hero-section .btn-secondary {
+    background-color: var(--pipefy-gray) !important; 
+    border-color: var(--pipefy-gray) !important;
+}
+
+        .dashboard-footer {
+            background-color: var(--pipefy-light-gray);
+            color: var(--pipefy-dark);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 3rem;
+        }
